@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { actors } from "../data";
 
-function Actors() {
+export default function Actors() {
   return (
-    <>
-      <header>
-        {/* What component should go here? */}
-      </header>
-      <main>
-        {/* Actor info here! */}
-      </main>
-    </>
+    <div>
+      <h1>Actors Page</h1>
+      {actors.map((actor) => (
+        <article key={actor.name}>
+          <h2>{actor.name}</h2>
+          <ul>
+            {actor.movies.map((movie, index) => (
+              <li key={`${actor.name}-${movie}-${index}`}>{movie}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
   );
-};
-
-export default Actors;
+}
